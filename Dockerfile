@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a parent image
-FROM node:18-alpine AS builder
+FROM --platform=linux/amd64 node:18-alpine AS builder
 
 # Set the working directory in the container
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY . ./
 RUN npm run build
 
 # Use a smaller image for the runtime
-FROM node:18-alpine
+FROM --platform=linux/amd64 node:18-alpine
 
 # Set the working directory in the container
 WORKDIR /app
